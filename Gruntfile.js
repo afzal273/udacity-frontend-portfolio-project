@@ -12,26 +12,28 @@ module.exports = function(grunt) {
                         {
                             width: 1200,
                             suffix: '_large',
-                            quality: 30
+                            quality: 80
                         },
                         {
                             width: 800,
                             suffix: '_medium',
-                            quality: 30
+                            quality: 80
                         },
                         {
                             width: 400,
                             suffix: '_small',
-                            quality: 30
+                            quality: 80
                         }
                     ]
                 },
-                files: [{
-                    expand: true,
-                    src: ['*-main.' + config.imgFormats],
-                    cwd: config.imgSrcDir,
-                    dest: config.imgDir
-                }]
+                files: [
+                    {
+                        expand: true,
+                        src: '*-main.' + config.imgFormats,
+                        cwd: config.imgSrcDir,
+                        dest: config.imgDir
+                    }
+                ]
             },
             // resize featured images
             featured: {
@@ -50,28 +52,36 @@ module.exports = function(grunt) {
                         }
                     ]
                 },
-                files: [{
-                    expand: true,
-                    src: ['*-featured.' + config.imgFormats],
-                    cwd: config.imgSrcDir,
-                    dest: config.imgDir
-                }]
+                files: [
+                    {
+                        expand: true,
+                        src: '*-featured.' + config.imgFormats,
+                        cwd: config.imgSrcDir,
+                        dest: config.imgDir
+                    }
+                ]
             }
         },
 
         // Clear out the images directory if it exists and css/js
         clean: {
             dev: {
-                src: [ config.imgDir+'*.' + config.imgFormats, config.jsDir + '*.min.js', config.cssDir + '*.min.css']
+                src: [
+                    config.imgDir+'*.' + config.imgFormats, config.jsDir + '*.min.js',
+                    config.cssDir + '*.min.css'
+                ]
             }
         },
-        
+
         // Copy vector images to dist dir
         copy: {
             vector: {
                 expand: true,
                 flatten: true,
-                src: [config.imgSrcDir+ '*', '!' + config.imgSrcDir+'*.'+config.imgFormats],
+                src: [
+                    config.imgSrcDir+ '*',
+                    '!' + config.imgSrcDir+'*.'+config.imgFormats
+                ],
                 dest: config.imgDir
             }
         },
@@ -79,10 +89,11 @@ module.exports = function(grunt) {
         // Concat css and js files
         concat: {
             vendorJS : {
-                src: [config.jsSrcDir + config.vendorDir + 'jquery-1.11.3.min.js',
-                        config.jsSrcDir + config.vendorDir + 'bootstrap.min.js',
-                        config.jsSrcDir + config.vendorDir + 'bootstrap-dialog.min.js'
-                        ],
+                src: [
+                    config.jsSrcDir + config.vendorDir + 'jquery-1.11.3.min.js',
+                    config.jsSrcDir + config.vendorDir + 'bootstrap.min.js',
+                    config.jsSrcDir + config.vendorDir + 'bootstrap-dialog.min.js'
+                ],
                 dest: config.jsDir + config.vendorMinJs
             },
             vendorCSS : {
@@ -106,9 +117,9 @@ module.exports = function(grunt) {
                 'Gruntfile.js',
                 config.jsSrcDir + '*.js',
                 '!'+ config.jsSrcDir + '*.min.js'
-                
+
             ]
-            
+
         },
         // lint css and exclude minified css
         csslint: {
@@ -126,48 +137,69 @@ module.exports = function(grunt) {
                 processImport: false
             },
             target: {
-                files: [{
-                    expand: true,
-                    cwd: config.cssSrcDir,
-                    src: ['*.css', '!*.min.css'],
-                    dest: config.cssSrcDir,
-                    ext: '.min.css'
-                },
-                {
-                    expand: true,
-                    cwd: config.cssSrcDir + config.vendorDir,
-                    src: ['*.css', '!*.min.css'],
-                    dest: config.cssSrcDir + config.vendorDir,
-                    ext: '.min.css'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: config.cssSrcDir,
+                        src: ['*.css', '!*.min.css'],
+                        dest: config.cssSrcDir,
+                        ext: '.min.css'
+                    },
+                    {
+                        expand: true,
+                        cwd: config.cssSrcDir + config.vendorDir,
+                        src: ['*.css', '!*.min.css'],
+                        dest: config.cssSrcDir + config.vendorDir,
+                        ext: '.min.css'
+                    }
+                ]
             }
         },
         //minify js
         uglify: {
             target: {
-                files: [{
-                    expand: true,
-                    cwd: config.jsSrcDir,
-                    src: ['*.js', '!*.min.js'],
-                    dest: config.jsSrcDir,
-                    ext: '.min.js'
-                },
-                {
-                    expand: true,
-                    cwd: config.jsSrcDir + config.vendorDir,
-                    src: ['*.js', '!*.min.js'],
-                    dest: config.jsSrcDir + config.vendorDir,
-                    ext: '.min.js'
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: config.jsSrcDir,
+                        src: ['*.js', '!*.min.js'],
+                        dest: config.jsSrcDir,
+                        ext: '.min.js'
+                    },
+                    {
+                        expand: true,
+                        cwd: config.jsSrcDir + config.vendorDir,
+                        src: ['*.js', '!*.min.js'],
+                        dest: config.jsSrcDir + config.vendorDir,
+                        ext: '.min.js'
+                    }
+                ]
             }
         },
         htmllint: {
             all: "*.html"
+        },
+        replace: {
+            html: {
+                src: '*.html',
+                overwrite: true,
+                replacements: [
+                    {
+                        from: "href=\"css/style.css\"",
+                        to: "href=\"dist/css/portfolio.min.css\""
+                    },
+                    {
+                        from: "src=\"js/portfolio.js\"",
+                        to: "src=\"dist/js/portfolio.min.js\""
+                    }
+                ]
+            }
         }
 
     });
+    grunt.registerTask('default', ['htmllint','jshint', 'csslint', 'cssmin', 'uglify', 'clean', 'concat','copy','responsive_images', 'replace']);
     //grunt.registerTask('default', ['htmllint','jshint', 'csslint', 'cssmin', 'uglify', 'clean', 'concat','copy','responsive_images']);
-    grunt.registerTask('default', ['htmllint', 'jshint', 'csslint', 'cssmin', 'uglify', 'concat']);
+    //grunt.registerTask('default', ['htmllint', 'jshint', 'csslint', 'cssmin', 'uglify', 'concat']);
     // order -> lint html, css, js, minify css/js and then concat
     // copy images, clean, make images responsive
 

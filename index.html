@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="dist/css/includes.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="dist/css/portfolio.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300">
     <title>Afzal's Portfolio</title>
 </head>
 <body>
 <div class="container">
     <header>
     <div class="row">
-        <div class="col-md-6 col-lg-6">
+        <div class="col-md-6 col-sm-6 col-xs-6">
             <!--Image source - https://d3u3u7bjn61hwm.cloudfront.net//dist/images/asset-logo-mark-e78b9.svg-->
-            <img class="img-responsive title-logo header-image" src="dist/images/asset-logo-mark-e78b9.svg" alt="Udacity Logo">
+            <img class="img-responsive header-image" src="dist/images/asset-logo-mark-e78b9.svg" alt="Udacity Logo">
         </div>
-        <div class="col-md-6 text-right text-uppercase">
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right text-uppercase">
             <h1 class="text-thin title-super">Afzal Syed</h1>
             <h4>Front-end Ninja</h4>
         </div>
@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-xs-12">
             <h2 class="hidden">Main Image Section</h2>
-            <img class="img-responsive" src="dist/images/sdSkyline-main-1200_large.jpg" alt="San Diego Skyline">
+            <img class="img-responsive" src="dist/images/sdSkyline-main-1200_large.jpg" srcset="dist/images/sdSkyline-main-400_small.jpg 400w, dist/images/sdSkyline-main-800_medium.jpg 800w, dist/images/sdSkyline-main-1200_large.jpg 1200w" sizes="100vw" alt="San Diego Skyline">
         </div>
     </div>
     </section>
@@ -43,48 +43,39 @@
         </div>
         <div class="row text-center">
             <div class="col-md-4 col-lg-4">
-                <img class="img-responsive featured" data-project-name="boat" src="dist/images/boat-featured-600_medium.jpg" alt="Boat">
+                <img class="img-responsive featured" data-project-name="boat" src="dist/images/boat-featured-600_medium.jpg" srcset="dist/images/boat-featured-600_medium.jpg 600w, dist/images/boat-featured-300_small.jpg 300w" sizes="100vw" alt="Boat">
                 <h3 class="text-uppercase">Boat</h3>
-                <p><a href="https://github.com/udacity/appify">https://github.com/asyed/boat</a></p>
+                <p><a href="#">https://github.com/asyed/boat</a></p>
             </div>
                 <div class="col-md-4 col-lg-4">
-                <img class="img-responsive featured" data-project-name="peacock" src="dist/images/peacock-featured-600_medium.jpg" alt="Peacock">
+                <img class="img-responsive featured" data-project-name="peacock" src="dist/images/peacock-featured-600_medium.jpg" srcset="dist/images/peacock-featured-600_medium.jpg 600w, dist/images/peacock-featured-300_small.jpg 300w" sizes="100vw" alt="Peacock">
                 <h3 class="text-uppercase">Peacock</h3>
-                <p><a href="https://github.com/udacity/appify">https://github.com/asyed/peacock</a></p>
+                <p><a href="#">https://github.com/asyed/peacock</a></p>
             </div>
                 <div class="col-md-4 col-lg-4">
-                <img class="img-responsive featured peacock" data-project-name="flower" src="dist/images/flowers-featured-600_medium.jpg" alt="Flower">
+                <img class="img-responsive featured peacock" data-project-name="flower" src="dist/images/flowers-featured-600_medium.jpg" srcset="dist/images/flowers-featured-600_medium.jpg 600w, dist/images/flowers-featured-300_small.jpg 300w" sizes="100vw" alt="Flower">
                 <h3 class="text-uppercase">Flowers</h3>
-                <p><a href="https://github.com/udacity/appify">https://github.com/asyed/flower</a></p>
+                <p><a href="#">https://github.com/asyed/flower</a></p>
             </div>
         </div>
     </section>
+
+    <footer>
+        <hr class="footer-divider">
+        <div class="row text-center">
+            <div class="col-md-12" id="social">
+                <a href="#" class="zocial-twitter">Twitter</a>
+                <a href="#" class="zocial-facebook">Facebook</a>
+                <a href="#" class="zocial-googleplus">Google+</a>
+                <a href="#" class="zocial-digg">Digg</a>
+            </div>
+        </div>
+    </footer>
+
 </div>
 
 <script src="dist/js/includes.min.js"></script>
-<script src="js/portfolio.js"></script>
-
-<!-- Modal -->
-<div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Favorite App Page</h4>
-            </div>
-            <div class="modal-body">
-                <img class="img-responsive" src="http://placehold.it/555x300" alt="Boat">
-                This was my first project in this class. I learned a lot about HTML and CSS.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
+<script src="dist/js/portfolio.min.js"></script>
 
 </body>
 </html>
