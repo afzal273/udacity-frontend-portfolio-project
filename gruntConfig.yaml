@@ -1,0 +1,16 @@
+jsSrcDir: js/
+jsDir: dist/js/
+cssSrcDir: css/
+cssDir: dist/css/
+vendorDir: vendor/
+imgSrcDir: images_src/
+imgDir: dist/images/
+vendorMinJs: includes.min.js
+vendorMinCss: includes.min.css
+appMinJs: portfolio.min.js
+appMinCss: portfolio.min.css
+appCss: portfolio.css
+appJs: portfolio.js
+minJs: "*.min.js"
+minCss: "*.min.css"
+imgFormats: "{gif,jpg,png,jpeg}"
