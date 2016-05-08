@@ -11,12 +11,13 @@ body {
     max-height: 100px;
 }
 
-.header-divider, .footer-divider {
-    border: 1px solid #BCBBBB;
+.header-divider,
+.footer-divider {
+    border: 1px solid #bcbbbb;
 }
 
 .text-muted {
-    color: #BCBBBB;
+    color: #bcbbbb;
 }
 
 .text-thin {
@@ -37,7 +38,9 @@ body {
     cursor: pointer;
 }
 
+
 /* zocial */
+
 [class*="zocial-"]:before {
     font-family: 'zocial', sans-serif;
     color: black;
@@ -46,14 +49,14 @@ body {
     width: 2em;
 }
 
-div#social a {
+.social a {
     margin: 0 1em 0 0;
 }
 
-div#social a:last-of-type {
+.social a:last-of-type {
     margin: 0;
 }
 
-div#social {
+.social {
     line-height: 2em;
 }

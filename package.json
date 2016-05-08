@@ -16,6 +16,8 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-html": "^7.0.0",
+    "grunt-jsbeautifier": "^0.2.12",
+    "grunt-prettify": "^0.4.0",
     "grunt-responsive-images": "^0.1.4",
     "grunt-text-replace": "^0.4.0"
   },
