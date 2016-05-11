@@ -153,13 +153,17 @@ module.exports = function(grunt) {
                     cwd: config.jsSrcDir,
                     src: ['*.js', '!*.min.js'],
                     dest: config.jsSrcDir,
-                    ext: '.min.js'
+                    rename: function(cwd, src) {
+                        return cwd + src.replace('.js', '') + '.min.js';
+                    }
                 }, {
                     expand: true,
                     cwd: config.jsSrcDir + config.vendorDir,
                     src: ['*.js', '!*.min.js'],
                     dest: config.jsSrcDir + config.vendorDir,
-                    ext: '.min.js'
+                    rename: function(cwd, src) {
+                        return cwd + src.replace('.js', '') + '.min.js';
+                    }
                 }]
             }
         },
